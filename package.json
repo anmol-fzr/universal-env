@@ -1,5 +1,5 @@
 {
-  "name": "core",
+  "name": "@universal-env/core",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -11,12 +11,21 @@
       "import": "./dist/index.mjs"
     }
   },
-  "files": ["dist"],   
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/anmol-fzr/@universal-env"
+    "url": "git+https://github.com/anmol-fzr/universal-env.git"
   },
-  "keywords": ["env", "zod", "validation", "typescript", "universal", "runtime"],
+  "keywords": [
+    "env",
+    "zod",
+    "validation",
+    "typescript",
+    "universal",
+    "runtime"
+  ],
   "license": "MIT",
   "author": "Anmol",
   "description": "Universal environment validator for Node, Bun, and Deno using Zod",
@@ -37,5 +46,6 @@
     "@types/deno": "^2.3.0",
     "@types/node": "^24.0.13",
     "zod": "^3.25.76"
-  }
+  },
+  "version": "1.0.1"
 }
