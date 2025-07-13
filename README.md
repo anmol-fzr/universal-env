@@ -1,15 +1,11 @@
-# core
+# Univeral Env
 
-To install dependencies:
+Universal runtime-independent, framework-agnostic environment variable validation and typing tool, that:
 
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.2.2. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+- Validates env vars using a schema using Zod
+- Generates types for IDE safety
+- Works across:
+    - Node.js
+    - Bun
+    - Deno
+- Fails fast before bootstrapping the serve
