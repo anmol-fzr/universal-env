@@ -1,6 +1,6 @@
 {
   "name": "@universal-env/vite",
-  "version": "1.0.126",
+  "version": "1.0.210",
   "description": "Vite plugin for validating env using @universal-env/core",
   "type": "module",
   "main": "./dist/index.cjs",

@@ -11,7 +11,7 @@ Universal runtime-independent, framework-agnostic environment variable validatio
 - Fails fast before bootstrapping the serve
 
 Other Adapters
-- [Vite](https://github.com/anmol-fzr/universal-env/blob/main/packages/vite/README.md) 
+- [Vite](https://github.com/anmol-fzr/universal-env/packages/vite/README.md) 
 
 ## Usage
 ```typescript
