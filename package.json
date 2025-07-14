@@ -1,14 +1,14 @@
 {
   "name": "@universal-env/core",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
     }
   },
   "files": [
@@ -47,5 +47,5 @@
     "@types/node": "^24.0.13",
     "zod": "^3.25.76"
   },
-  "version": "1.0.1"
+  "version": "1.0.2"
 }
