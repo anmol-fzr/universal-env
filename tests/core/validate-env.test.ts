@@ -33,7 +33,7 @@ describe("validateEnv", () => {
       DATABASE_URL: "https://example.com",
     };
 
-    await validateEnv(schema, mockEnv, OUTPUT_FILE);
+    await validateEnv({ schema, rawEnv: mockEnv, path: OUTPUT_FILE });
 
     const content = readFileSync(OUTPUT_FILE, "utf-8");
 
@@ -47,7 +47,7 @@ describe("validateEnv", () => {
     };
 
     try {
-      await validateEnv(schema, mockEnv, OUTPUT_FILE);
+      await validateEnv({ schema, rawEnv: mockEnv, path: OUTPUT_FILE });
       throw new Error("Should not reach here");
     } catch (e) {
       expect(e).toBeDefined();
@@ -61,7 +61,7 @@ describe("validateEnv", () => {
     };
 
     try {
-      await validateEnv(schema, mockEnv, OUTPUT_FILE);
+      await validateEnv({ schema, rawEnv: mockEnv, path: OUTPUT_FILE });
       throw new Error("Should not reach here");
     } catch (e) {
       expect(e).toBeDefined();
@@ -74,9 +74,23 @@ describe("validateEnv", () => {
       DATABASE_URL: "https://example.com",
     };
 
-    await validateEnv(schema, mockEnv, OUTPUT_FILE);
+    await validateEnv({ schema, rawEnv: mockEnv, path: OUTPUT_FILE });
     const content = readFileSync(OUTPUT_FILE, "utf-8");
 
     expect(content).toContain(`{\n    PORT: string;\n    DATABASE_URL: string;\n}`)
+  });
+
+  it("writes types correctly with wrapper", async () => {
+    const mockEnv = {
+      PORT: "3000",
+      DATABASE_URL: "https://example.com",
+    };
+
+    await validateEnv({ schema, rawEnv: mockEnv, path: OUTPUT_FILE, wrapper: 'export type Envs {{content}}' });
+    const content = readFileSync(OUTPUT_FILE, "utf-8");
+
+    const normalizedContent = content.replace(/\s+/g, ' ')
+
+    expect(normalizedContent).toEqual(`export type Envs { PORT: string; DATABASE_URL: string; }`)
   });
 });
