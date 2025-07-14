@@ -1,6 +1,19 @@
 {
   "name": "@universal-env/core",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/anmol-fzr/universal-env.git"
@@ -13,15 +26,13 @@
     "universal",
     "runtime"
   ],
+  "scripts":{
+    "build": "tsup --config packages/core/tsup.config.ts",
+    "publish": "bun pm version patch && bun publish --access public"
+  },
   "license": "MIT",
   "author": "Anmol",
   "description": "Universal environment validator for Node, Bun, and Deno using Zod",
-  "scripts": {
-    "test": "bun test --verbose",
-    "build": "bun run --filter '*' build",
-    "publish": "bun run --filter '*' publish"
-  },
-  "workspaces": [ "packages/*" ],
   "devDependencies": {
     "@types/bun": "latest",
     "tsup": "^8.5.0",
@@ -35,5 +46,5 @@
     "@types/node": "^24.0.13",
     "zod": "^3.25.76"
   },
-  "version": "1.0.4"
+  "version": "1.0.125"
 }

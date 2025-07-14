@@ -1,0 +1,28 @@
+{
+  "name": "@universal-env/vite",
+  "version": "1.0.126",
+  "description": "Vite plugin for validating env using @universal-env/core",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts":{
+    "build": "tsup --config packages/vite/tsup.config.ts",
+    "publish": "bun pm version patch && bun publish --access public"
+  },
+  "dependencies": {
+    "@universal-env/core": "^1.0.4",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -10,6 +10,10 @@ Universal runtime-independent, framework-agnostic environment variable validatio
     - Deno
 - Fails fast before bootstrapping the serve
 
+Other Adapters
+- [Vite](https://github.com/anmol-fzr/universal-env/packages/vite/README.md) 
+
+## Usage
 ```typescript
 
 import { validateEnv } from "@universal-env/core"
@@ -20,14 +24,25 @@ const envSchema = z.object({
 	JWT_SECRET: z.string().min(10, "JWT_SECRET is required"),
 });
 
-// Works in Node.js, Bun and Cloud Functions, Deno.env.toObject() for Deno, Check for yours
-const rawEnv = process.env;
+const rawEnv = process.env; // Works in Node.js, Bun and Cloud Functions, Deno.env.toObject() for Deno, Check for yours
 await validateEnv(envSchema, rawEnv, ".env.d.ts")
 ```
 
 You can put this piece of code in a file to run before starting the server
 
 Will Support Vite, Express and Hono startup events in future
+
+
+## Recommended
+to freeze the env Object
+
+```typescript
+const envs = process.env; // Works in Node.js, Bun and Cloud Functions, Deno.env.toObject() for Deno, Check for yours
+
+const envs = Object.freeze({
+    JWT_SECRET: envs.JWT_SECRET,
+})
+```
 
 ### Why ?
 
